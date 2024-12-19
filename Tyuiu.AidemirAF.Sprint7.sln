@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project.Task1", "Project.Task1", "{A7296893-23AE-452D-B81C-B05A22120C9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.AidemirAF.Sprint7.Project.V1", "Tyuiu.AidemirAF.Sprint7.Project.V1\Tyuiu.AidemirAF.Sprint7.Project.V1.csproj", "{25976536-A76B-4990-B581-6A4DFAC9611C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.AidemirAF.Sprint7.Project.V1.Lib", "Tyuiu.AidemirAF.Sprint7.Project.V1.Lib\Tyuiu.AidemirAF.Sprint7.Project.V1.Lib.csproj", "{B1AF489C-8DEC-4099-B6EB-D72A0A586642}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25976536-A76B-4990-B581-6A4DFAC9611C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25976536-A76B-4990-B581-6A4DFAC9611C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25976536-A76B-4990-B581-6A4DFAC9611C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25976536-A76B-4990-B581-6A4DFAC9611C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AF489C-8DEC-4099-B6EB-D72A0A586642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AF489C-8DEC-4099-B6EB-D72A0A586642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AF489C-8DEC-4099-B6EB-D72A0A586642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AF489C-8DEC-4099-B6EB-D72A0A586642}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{25976536-A76B-4990-B581-6A4DFAC9611C} = {A7296893-23AE-452D-B81C-B05A22120C9B}
+		{B1AF489C-8DEC-4099-B6EB-D72A0A586642} = {A7296893-23AE-452D-B81C-B05A22120C9B}
+	EndGlobalSection
+EndGlobal
