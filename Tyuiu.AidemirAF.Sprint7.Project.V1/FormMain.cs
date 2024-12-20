@@ -255,29 +255,5 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1
             }
             return csv.ToString();
         }
-
-        private void toolStripButtonSaveFile_AAF_Click(object sender, EventArgs e)
-        {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
-                saveFileDialog.Title = "Save File";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = saveFileDialog.FileName;
-                    string content = DataGridViewToCSV(dataGridViewMain_AAF);
-                    bool success = fileSaver.SaveFile(filePath, content);
-                    if (success)
-                    {
-                        MessageBox.Show("File saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error saving file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
     }
 }
