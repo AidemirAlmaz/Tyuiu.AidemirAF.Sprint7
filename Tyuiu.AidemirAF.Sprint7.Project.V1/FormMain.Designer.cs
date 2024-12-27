@@ -49,9 +49,11 @@
             openFileDialogTask_AAF = new OpenFileDialog();
             toolTipHint_AAF = new ToolTip(components);
             saveFileDialog_AAF = new SaveFileDialog();
+            panel2 = new Panel();
             menuStrip_AAF.SuspendLayout();
             toolStrip_AAF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain_AAF).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip_AAF
@@ -92,7 +94,7 @@
             // ToolStripMenuItemSearch_AAF
             // 
             ToolStripMenuItemSearch_AAF.Name = "ToolStripMenuItemSearch_AAF";
-            ToolStripMenuItemSearch_AAF.Size = new Size(204, 30);
+            ToolStripMenuItemSearch_AAF.Size = new Size(224, 30);
             ToolStripMenuItemSearch_AAF.Text = "Поиск";
             ToolStripMenuItemSearch_AAF.ToolTipText = "Нажмите чтобы найти необходимые значения в таблице";
             ToolStripMenuItemSearch_AAF.Click += ToolStripMenuItemSearch_AAF_Click;
@@ -100,7 +102,7 @@
             // ToolStripMenuItemSort_AAF
             // 
             ToolStripMenuItemSort_AAF.Name = "ToolStripMenuItemSort_AAF";
-            ToolStripMenuItemSort_AAF.Size = new Size(204, 30);
+            ToolStripMenuItemSort_AAF.Size = new Size(224, 30);
             ToolStripMenuItemSort_AAF.Text = "Сортировка";
             ToolStripMenuItemSort_AAF.ToolTipText = "Нажмите чтобы отсортировать значения таблицы";
             ToolStripMenuItemSort_AAF.Click += ToolStripMenuItemSort_AAF_Click;
@@ -109,7 +111,7 @@
             // 
             ToolStripMenuItemFilt_AAF.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPower_AAF, ToolStripMenuItemQual_AAF });
             ToolStripMenuItemFilt_AAF.Name = "ToolStripMenuItemFilt_AAF";
-            ToolStripMenuItemFilt_AAF.Size = new Size(204, 30);
+            ToolStripMenuItemFilt_AAF.Size = new Size(224, 30);
             ToolStripMenuItemFilt_AAF.Text = "Фильтрация";
             // 
             // ToolStripMenuItemPower_AAF
@@ -189,9 +191,10 @@
             // 
             // dataGridViewMain_AAF
             // 
+            dataGridViewMain_AAF.AllowUserToAddRows = false;
             dataGridViewMain_AAF.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMain_AAF.Dock = DockStyle.Fill;
-            dataGridViewMain_AAF.Location = new Point(0, 66);
+            dataGridViewMain_AAF.Location = new Point(0, 0);
             dataGridViewMain_AAF.Name = "dataGridViewMain_AAF";
             dataGridViewMain_AAF.RowHeadersVisible = false;
             dataGridViewMain_AAF.RowHeadersWidth = 51;
@@ -202,12 +205,21 @@
             // 
             openFileDialogTask_AAF.FileName = "ProjectFile";
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(dataGridViewMain_AAF);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 66);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(932, 387);
+            panel2.TabIndex = 0;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(932, 453);
-            Controls.Add(dataGridViewMain_AAF);
+            Controls.Add(panel2);
             Controls.Add(toolStrip_AAF);
             Controls.Add(menuStrip_AAF);
             MainMenuStrip = menuStrip_AAF;
@@ -222,6 +234,7 @@
             toolStrip_AAF.ResumeLayout(false);
             toolStrip_AAF.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMain_AAF).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -249,5 +262,6 @@
         private ToolStripMenuItem ToolStripMenuItemQual_AAF;
         private ToolTip toolTipHint_AAF;
         private SaveFileDialog saveFileDialog_AAF;
+        private Panel panel2;
     }
 }

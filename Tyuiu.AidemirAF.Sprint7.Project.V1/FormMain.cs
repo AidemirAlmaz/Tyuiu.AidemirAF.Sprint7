@@ -1,10 +1,12 @@
-using System.ComponentModel;
+п»їusing System.ComponentModel;
 using System.Data;
 using System.Formats.Asn1;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Tyuiu.AidemirAF.Sprint7.Project.V1.Lib;
+using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static Tyuiu.AidemirAF.Sprint7.Project.V1.Lib.DataService;
 
@@ -15,7 +17,6 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1
         private BindingSource bindingSource;
         private DataTable dataTable;
         private DataService dataService;
-        private FileSaver fileSaver;
         public FormMain()
         {
             InitializeComponent();
@@ -29,26 +30,26 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1
         private void InitializeDataTable()
         {
             dataTable = new DataTable();
-            dataTable.Columns.Add("Номер водительских прав", typeof(string));
-            dataTable.Columns.Add("ФИО владельца автомобиля", typeof(string));
-            dataTable.Columns.Add("Адрес владельца", typeof(string));
-            dataTable.Columns.Add("Номер телефона владельца", typeof(string));
-            dataTable.Columns.Add("ФИО механика", typeof(string));
-            dataTable.Columns.Add("Номер телефона механика", typeof(string));
-            dataTable.Columns.Add("Квалификация механика (механик разряда)", typeof(int));
-            dataTable.Columns.Add("Номер автомобиля", typeof(string));
-            dataTable.Columns.Add("Марка автомобиля", typeof(string));
-            dataTable.Columns.Add("Мощность автомобиля (л/с)", typeof(int));
-            dataTable.Columns.Add("Цвет автомобиля", typeof(string));
-            dataTable.Columns.Add("Название ремонтной мастерской", typeof(string));
-            dataTable.Columns.Add("Адрес мастерской", typeof(string));
-            dataTable.Columns.Add("Номер телефона мастерской", typeof(string));
+            dataTable.Columns.Add("РќРѕРјРµСЂ РІРѕРґРёС‚РµР»СЊСЃРєРёС… РїСЂР°РІ", typeof(string));
+            dataTable.Columns.Add("Р¤РРћ РІР»Р°РґРµР»СЊС†Р° Р°РІС‚РѕРјРѕР±РёР»СЏ", typeof(string));
+            dataTable.Columns.Add("РђРґСЂРµСЃ РІР»Р°РґРµР»СЊС†Р°", typeof(string));
+            dataTable.Columns.Add("РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІР»Р°РґРµР»СЊС†Р°", typeof(string));
+            dataTable.Columns.Add("Р¤РРћ РјРµС…Р°РЅРёРєР°", typeof(string));
+            dataTable.Columns.Add("РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РјРµС…Р°РЅРёРєР°", typeof(string));
+            dataTable.Columns.Add("РљРІР°Р»РёС„РёРєР°С†РёСЏ РјРµС…Р°РЅРёРєР° (РјРµС…Р°РЅРёРє СЂР°Р·СЂСЏРґР°)", typeof(int));
+            dataTable.Columns.Add("РќРѕРјРµСЂ Р°РІС‚РѕРјРѕР±РёР»СЏ", typeof(string));
+            dataTable.Columns.Add("РњР°СЂРєР° Р°РІС‚РѕРјРѕР±РёР»СЏ", typeof(string));
+            dataTable.Columns.Add("РњРѕС‰РЅРѕСЃС‚СЊ Р°РІС‚РѕРјРѕР±РёР»СЏ (Р»/СЃ)", typeof(int));
+            dataTable.Columns.Add("Р¦РІРµС‚ Р°РІС‚РѕРјРѕР±РёР»СЏ", typeof(string));
+            dataTable.Columns.Add("РќР°Р·РІР°РЅРёРµ СЂРµРјРѕРЅС‚РЅРѕР№ РјР°СЃС‚РµСЂСЃРєРѕР№", typeof(string));
+            dataTable.Columns.Add("РђРґСЂРµСЃ РјР°СЃС‚РµСЂСЃРєРѕР№", typeof(string));
+            dataTable.Columns.Add("РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РјР°СЃС‚РµСЂСЃРєРѕР№", typeof(string));
         }
         private void ToolStripMenuItemOpenFile_AAF_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.Title = "Выберите файл с расширением Csv";
+            openFileDialog.Title = "Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р» СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј Csv";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -92,20 +93,20 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1
                 if (formAddData.ShowDialog() == DialogResult.OK)
                 {
                     DataRow row = dataTable.NewRow();
-                    row["Номер водительских прав"] = formAddData.DriverLicense;
-                    row["ФИО владельца автомобиля"] = formAddData.FullName;
-                    row["Адрес владельца"] = formAddData.Address;
-                    row["Номер телефона владельца"] = formAddData.Phone;
-                    row["ФИО механика"] = formAddData.FullNameMech;
-                    row["Номер телефона механика"] = formAddData.PhoneMech;
-                    row["Квалификация механика (механик разряда)"] = formAddData.QualMech;
-                    row["Номер автомобиля"] = formAddData.CarNumber;
-                    row["Марка автомобиля"] = formAddData.CarBrand;
-                    row["Мощность автомобиля (л/с)"] = formAddData.CarPower;
-                    row["Цвет автомобиля"] = formAddData.CarColor;
-                    row["Название ремонтной мастерской"] = formAddData.NameWorkshop;
-                    row["Адрес мастерской"] = formAddData.AddressWorkshop;
-                    row["Номер телефона мастерской"] = formAddData.PhoneWorkshop;
+                    row["РќРѕРјРµСЂ РІРѕРґРёС‚РµР»СЊСЃРєРёС… РїСЂР°РІ"] = formAddData.DriverLicense;
+                    row["Р¤РРћ РІР»Р°РґРµР»СЊС†Р° Р°РІС‚РѕРјРѕР±РёР»СЏ"] = formAddData.FullName;
+                    row["РђРґСЂРµСЃ РІР»Р°РґРµР»СЊС†Р°"] = formAddData.Address;
+                    row["РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІР»Р°РґРµР»СЊС†Р°"] = formAddData.Phone;
+                    row["Р¤РРћ РјРµС…Р°РЅРёРєР°"] = formAddData.FullNameMech;
+                    row["РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РјРµС…Р°РЅРёРєР°"] = formAddData.PhoneMech;
+                    row["РљРІР°Р»РёС„РёРєР°С†РёСЏ РјРµС…Р°РЅРёРєР° (РјРµС…Р°РЅРёРє СЂР°Р·СЂСЏРґР°)"] = formAddData.QualMech;
+                    row["РќРѕРјРµСЂ Р°РІС‚РѕРјРѕР±РёР»СЏ"] = formAddData.CarNumber;
+                    row["РњР°СЂРєР° Р°РІС‚РѕРјРѕР±РёР»СЏ"] = formAddData.CarBrand;
+                    row["РњРѕС‰РЅРѕСЃС‚СЊ Р°РІС‚РѕРјРѕР±РёР»СЏ (Р»/СЃ)"] = formAddData.CarPower;
+                    row["Р¦РІРµС‚ Р°РІС‚РѕРјРѕР±РёР»СЏ"] = formAddData.CarColor;
+                    row["РќР°Р·РІР°РЅРёРµ СЂРµРјРѕРЅС‚РЅРѕР№ РјР°СЃС‚РµСЂСЃРєРѕР№"] = formAddData.NameWorkshop;
+                    row["РђРґСЂРµСЃ РјР°СЃС‚РµСЂСЃРєРѕР№"] = formAddData.AddressWorkshop;
+                    row["РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РјР°СЃС‚РµСЂСЃРєРѕР№"] = formAddData.PhoneWorkshop;
                     dataTable.Rows.Add(row);
                 }
             }
@@ -222,38 +223,34 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1
             FormAbout formAbout = new FormAbout();
             formAbout.ShowDialog();
         }
-        private string DataGridViewToCSV(DataGridView dataGridView)
+        private void toolStripButtonSaveFile_AAF_Click(object sender, EventArgs e)
         {
-            if (dataGridView == null || dataGridView.Columns.Count == 0 || dataGridView.Rows.Count == 0)
+            saveFileDialog_AAF.Filter = "CSV Files (*.csv)|*.csv";
+            saveFileDialog_AAF.FileName = "РђРІС‚РѕСЂРµРјРѕРЅС‚РЅС‹Рµ РјР°СЃС‚РµСЂСЃРєРёРµ";
+            saveFileDialog_AAF.InitialDirectory = Directory.GetCurrentDirectory();
+            if (saveFileDialog_AAF.ShowDialog() == DialogResult.OK)
             {
-                throw new InvalidOperationException("DataGridView is not initialized or empty.");
-            }
-            StringBuilder csv = new StringBuilder();
-            foreach (DataGridViewColumn column in dataGridView.Columns)
-            {
-                if (column.HeaderText != null)
+                string path = saveFileDialog_AAF.FileName;
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                string fileCSV = "";
+                for (int j = 0; j < dataGridViewMain_AAF.ColumnCount; j++)
                 {
-                    csv.Append(column.HeaderText);
+                    fileCSV += dataGridViewMain_AAF.Columns[j].HeaderText + ";";
                 }
-                csv.Append(",");
-            }
-            csv.AppendLine();
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                if (!row.IsNewRow)
+                fileCSV += "\r\n";
+                for (int i = 0; i < dataGridViewMain_AAF.Rows.Count; i++)
                 {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    for (int j = 0; j < dataGridViewMain_AAF.Columns.Count; j++)
                     {
-                        if (cell.Value != null)
-                        {
-                            csv.Append(cell.Value.ToString());
-                        }
-                        csv.Append(",");
+                        fileCSV += (dataGridViewMain_AAF[j, i].Value ?? "").ToString() + ";";
                     }
-                    csv.AppendLine();
+                    fileCSV += "\r\n";
+                }
+                using (StreamWriter sr = new StreamWriter(path, false, Encoding.GetEncoding("windows-1251")))
+                {
+                    sr.Write(fileCSV);
                 }
             }
-            return csv.ToString();
         }
     }
 }

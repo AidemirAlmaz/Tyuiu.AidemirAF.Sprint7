@@ -62,10 +62,5 @@ namespace Tyuiu.AidemirAF.Sprint7.Project.V1.Lib
 
             return resultTable;
         }
-        public class FileSaver
-        {
-            
-         
-        }
     }
 }
